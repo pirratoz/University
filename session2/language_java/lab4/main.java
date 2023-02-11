@@ -18,13 +18,13 @@ class Pupil{
         System.out.println(String.format("%s: Здравствуйте, я %s!", name, type_man));
     }
     public Boolean agree_with_mark(Integer a){
-        if (a == 2 || a == 3) return false;
+        if (a <= 3) return false;
         return true;
     }
 }
 
 class SchoolMan extends Pupil{
-    Integer grade;  // 3 класс
+    Integer grade = 1;  // 3 класс
     SchoolMan(String name, Integer age, Character sex){
         super(name, age, sex);
         if (sex == 'm') type_man = "школьник"; else type_man = "школьница";
@@ -47,7 +47,7 @@ class Student extends Pupil{
         this.course = course;
     }
     public Boolean agree_with_mark(Integer a){
-        if (a == 2) return false;
+        if (a <= 2) return false;
         return true;
     }
     public Boolean agree_with_mark(String a){
@@ -61,19 +61,66 @@ class Student extends Pupil{
 }
 
 
+class Test{
+    public void start(){
+        System.out.println(String.format("%s - %b", "Pupil", test_pupil()));
+        System.out.println(String.format("%s - %b", "SchoolMan", test_schoolman()));
+        System.out.println(String.format("%s - %b", "Student", test_student()));
+    }
+
+    private Boolean test_pupil(){
+        Pupil man = new Pupil("Кирилл", 12, 'm');
+        if (!(man.agree_with_mark(5) == true)) return false;
+        if (!(man.agree_with_mark(4) == true)) return false;
+        if (!(man.agree_with_mark(3) == false)) return false;
+        if (!(man.agree_with_mark(2) == false)) return false;
+        return true;
+    }
+    private Boolean test_schoolman(){
+        SchoolMan man = new SchoolMan("Кирилл", 12, 'm');
+        if (!(man.agree_with_mark(5) == true)) return false;
+        if (!(man.agree_with_mark(4) == true)) return false;
+        if (!(man.agree_with_mark(3) == false)) return false;
+        if (!(man.agree_with_mark(2) == false)) return false;
+        if (!(man.grade == 1)) return false;
+        man.grade = 4;
+        if (!(man.grade == 4)) return false;
+        return true;
+    }
+    private Boolean test_student(){
+        Student man = new Student("Кирилл", 12, 'm');
+        if (!(man.agree_with_mark(5) == true)) return false;
+        if (!(man.agree_with_mark(4) == true)) return false;
+        if (!(man.agree_with_mark(3) == true)) return false;
+        if (!(man.agree_with_mark(2) == false)) return false;
+        if (!(man.course == 1)) return false;
+        man.course = 4;
+        if (!(man.course == 4)) return false;
+        if (!(man.agree_with_mark("A") == true)) return false;
+        if (!(man.agree_with_mark("B") == true)) return false;
+        if (!(man.agree_with_mark("C") == true)) return false;
+        if (!(man.agree_with_mark("D") == false)) return false;
+        if (!(man.agree_with_mark("5") == true)) return false;
+        if (!(man.agree_with_mark("2") == false)) return false;
+        return true;
+    }
+}
+
 class Main{
     public static void main(String[] args){
-        Pupil man_1 = new Pupil("Кирилл", 12, 'm');
-        SchoolMan man_2 = new SchoolMan("Олег", 16, 'm');
-        Student man_3 = new Student("Мария", 18, 'w');
-        man_1.greetings();
-        man_2.greetings();
-        man_3.greetings();
-        Boolean result = man_1.agree_with_mark(5);
-        System.out.println(result);
-        result = man_2.agree_with_mark(3);
-        System.out.println(result);
-        result = man_3.agree_with_mark("3");
-        System.out.println(result);
+        // Pupil man_1 = new Pupil("Кирилл", 12, 'm');
+        // SchoolMan man_2 = new SchoolMan("Олег", 16, 'm');
+        // Student man_3 = new Student("Мария", 18, 'w');
+        // man_1.greetings();
+        // man_2.greetings();
+        // man_3.greetings();
+        // Boolean result = man_1.agree_with_mark(5);
+        // System.out.println(result);
+        // result = man_2.agree_with_mark(3);
+        // System.out.println(result);
+        // result = man_3.agree_with_mark("3");
+        // System.out.println(result);
+        Test test = new Test();
+        test.start();
     }
 }
