@@ -9,9 +9,8 @@ class Main{
         Integer count_symbol = scanner.nextInt();
         String str2 = "бвгджзйклмнпрстфхцчшщ";
         String str3 = "";
-        String[] words = str1.split(" ");
         Integer count_remove = 0;
-        for (String word : words){
+        for (String word : str1.split(" ")){
             if (word.length() == count_symbol && str2.indexOf(word.toLowerCase().charAt(0)) >= 0) {
                 count_remove += 1;
                 continue;
