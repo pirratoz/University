@@ -44,7 +44,7 @@ class Cart{
             cout << "==== ==== ==== ==== ==== ==== ==== ==== == VEGETABLES END == ==== ==== ==== ==== ==== ==== ==== ====" << endl;
         }
 
-        Cart* add_value(vegetable* data_vegetable){
+        Cart* add_to_start(vegetable* data_vegetable){
             if (this->data == nullptr){
                 this->data = data_vegetable;
                 return this;
@@ -64,12 +64,12 @@ int main(){
     for (int i = 0; i < 2; ++i){
         cin >> title >> weight >> price;
         vegetable* veg = new vegetable(title, weight, price);
-        cart = cart->add_value(veg);
+        cart = cart->add_to_start(veg);
     }
-    // cart = cart->add_value(new vegetable("Огурец", 65.52f, 0.751f));
-    // cart = cart->add_value(new vegetable("Помидор", 90.53f, 0.34f));
-    // cart = cart->add_value(new vegetable("Капуста", 13.28f, 2.565f));
-    // cart = cart->add_value(new vegetable("Лук", 10.2f, 1.5f));
+    // cart = cart->add_to_start(new vegetable("Огурец", 65.52f, 0.751f));
+    // cart = cart->add_to_start(new vegetable("Помидор", 90.53f, 0.34f));
+    // cart = cart->add_to_start(new vegetable("Капуста", 13.28f, 2.565f));
+    // cart = cart->add_to_start(new vegetable("Лук", 10.2f, 1.5f));
     cart->print_all_data();
     return 0;
 }
