@@ -4,7 +4,7 @@
 using namespace std;
 
 //
-// 22ИП1Б (2)
+// 22ИП1Б
 //
 
 struct vegetable
@@ -35,7 +35,7 @@ class Cart{
             cout << "==== ==== ==== ==== ==== ==== ==== ==== ==== VEGETABLES ==== ==== ==== ==== ==== ==== ==== ==== ====" << endl;
             if (this->data == nullptr) return;
             Cart* result = this;
-            printf("Titile\t\tWeight\t\tPrice\n");
+            printf("Title\t\tWeight\t\tPrice\n");
             while (true){
                 printf("%s\t\t%f\t%f\n", result->data->title.data(), result->data->weight, result->data->price);
                 if (result->next == nullptr) break;
@@ -57,11 +57,14 @@ class Cart{
 };
 
 int main(){
-    Cart* cart = new Cart();
     string title;
+    int count_vegetable;
     float weight, price;
-    cout << "Input: title, weight, price" << endl;
-    for (int i = 0; i < 2; ++i){
+    Cart* cart = new Cart();
+    cout << "Введите количество овощей для добавления" << endl;
+    cin >> count_vegetable;
+    for (int i = 0; i < count_vegetable; ++i){
+        cout << "Input: title, weight, price" << endl;
         cin >> title >> weight >> price;
         vegetable* veg = new vegetable(title, weight, price);
         cart = cart->add_to_start(veg);

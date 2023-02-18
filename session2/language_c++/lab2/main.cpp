@@ -35,7 +35,7 @@ class Cart{
             cout << "==== ==== ==== ==== ==== ==== ==== ==== ==== VEGETABLES ==== ==== ==== ==== ==== ==== ==== ==== ====" << endl;
             if (this->data == nullptr) return;
             Cart* result = this;
-            printf("Titile\t\tWeight\t\tPrice\n");
+            printf("Title\t\tWeight\t\tPrice\n");
             while (true){
                 printf("%s\t\t%f\t%f\n", result->data->title.data(), result->data->weight, result->data->price);
                 if (result->next == nullptr) break;
